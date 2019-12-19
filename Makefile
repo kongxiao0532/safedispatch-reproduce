@@ -1,13 +1,4 @@
-# The most recent build from source of LLVM I did used the following cmake
-# invocation:
-#
-# $ cmake -DCMAKE_BUILD_TYPE=Release \
-#         -DLLVM_ENABLE_ASSERTIONS=ON \
-#         -DCMAKE_C_FLAGS=-DLLVM_ENABLE_DUMP \
-#         -DCMAKE_CXX_FLAGS=-DLLVM_ENABLE_DUMP \
-#         -DLLVM_TARGETS_TO_BUILD="X86" \
-#         -G Ninja
-#
+# Modified from https://raw.githubusercontent.com/eliben/llvm-clang-samples/master/Makefile
 
 LLVM_SRC_PATH := $$HOME/llvm-project
 
@@ -18,7 +9,7 @@ LLVM_SRC_PATH := $$HOME/llvm-project
 # process. It should contain the tools like opt, llc and clang. The default
 # reflects a release build with CMake and Ninja. binary build of LLVM, point it
 # to the bin/ directory.
-LLVM_BUILD_PATH := $$HOME/llvm-project/build
+LLVM_BUILD_PATH := $(LLVM_SRC_PATH)/build
 LLVM_BIN_PATH 	:= $(LLVM_BUILD_PATH)/bin
 
 $(info -----------------------------------------------)
@@ -90,7 +81,7 @@ BUILDDIR := build
 all: make_builddir \
 	emit_build_config \
 	$(BUILDDIR)/SafeDispatchIns.so \
-	$(BUILDDIR)/ClassHierachyAnalysisPlugin.so
+	$(BUILDDIR)/CHAPlugin.so
 
 .PHONY: test
 test: emit_build_config
@@ -103,6 +94,7 @@ emit_build_config: make_builddir
 make_builddir:
 	@test -d $(BUILDDIR) || mkdir $(BUILDDIR)
 
+# LLVM pass
 $(BUILDDIR)/SafeDispatchIns.so: inst-ir/SafeDispatchIns.cpp
 	$(CXX) $(PLUGIN_CXXFLAGS) $(CXXFLAGS) $(LLVM_CXXFLAGS) \
 		$^ $(PLUGIN_LDFLAGS) $(LLVM_LDFLAGS_NOLIBS) -o $@
@@ -113,7 +105,7 @@ $(BUILDDIR)/rewritersample: $(SRC_CLANG_DIR)/rewritersample.cpp
 		$(CLANG_LIBS) $(LLVM_LDFLAGS) -o $@
 
 # Clang plugin
-$(BUILDDIR)/ClassHierachyAnalysisPlugin.so: cha-ast/ClassHierachyAnalysisPlugin.cpp
+$(BUILDDIR)/CHAPlugin.so: cha-ast/CHAPlugin.cpp cha-ast/CHAVisitor.cpp
 	$(CXX) $(PLUGIN_CXXFLAGS) $(CXXFLAGS) $(LLVM_CXXFLAGS) $(CLANG_INCLUDES) $^ \
 		$(PLUGIN_LDFLAGS) $(LLVM_LDFLAGS_NOLIBS) -o $@
 
@@ -121,7 +113,7 @@ $(BUILDDIR)/ClassHierachyAnalysisPlugin.so: cha-ast/ClassHierachyAnalysisPlugin.
 .PHONY: clean format
 
 clean:
-	rm -rf $(BUILDDIR)/* *.dot test/*.pyc test/__pycache__
+	rm -rf $(BUILDDIR)/* *.dot
 
 format:
 	find . -name "*.cpp" | xargs clang-format -style=file -i

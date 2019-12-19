@@ -1,0 +1,1 @@
+- Clang Plugin for class hierachy analysis ```clang -cc1 -load ../build/CHAPlugin.so  -plugin ClassHierachyAnalysis classtest.cpp```

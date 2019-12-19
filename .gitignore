@@ -1,0 +1,7 @@
+build/*
+
+# cpp binary
+*.so
+*.native
+# LLVM binary
+*.bc

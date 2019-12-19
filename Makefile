@@ -81,7 +81,8 @@ BUILDDIR := build
 all: make_builddir \
 	emit_build_config \
 	$(BUILDDIR)/SafeDispatchIns.so \
-	$(BUILDDIR)/CHAPlugin.so
+	$(BUILDDIR)/CHAPlugin.so \
+	$(BUILDDIR)/CHATooling
 
 .PHONY: test
 test: emit_build_config
@@ -100,12 +101,12 @@ $(BUILDDIR)/SafeDispatchIns.so: inst-ir/SafeDispatchIns.cpp
 		$^ $(PLUGIN_LDFLAGS) $(LLVM_LDFLAGS_NOLIBS) -o $@
 
 # Clang LibTooling
-$(BUILDDIR)/rewritersample: $(SRC_CLANG_DIR)/rewritersample.cpp
+$(BUILDDIR)/CHATooling: cha-ast-tooling/CHATooling.cpp cha-ast-plugin/CHAVisitor.cpp
 	$(CXX) $(CXXFLAGS) $(LLVM_CXXFLAGS) $(CLANG_INCLUDES) $^ \
 		$(CLANG_LIBS) $(LLVM_LDFLAGS) -o $@
 
 # Clang plugin
-$(BUILDDIR)/CHAPlugin.so: cha-ast/CHAPlugin.cpp cha-ast/CHAVisitor.cpp
+$(BUILDDIR)/CHAPlugin.so: cha-ast-plugin/CHAPlugin.cpp cha-ast-plugin/CHAVisitor.cpp
 	$(CXX) $(PLUGIN_CXXFLAGS) $(CXXFLAGS) $(LLVM_CXXFLAGS) $(CLANG_INCLUDES) $^ \
 		$(PLUGIN_LDFLAGS) $(LLVM_LDFLAGS_NOLIBS) -o $@
 

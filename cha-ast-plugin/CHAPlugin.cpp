@@ -23,7 +23,7 @@ public:
 
 
   void HandleTranslationUnit(ASTContext& context) override {
-    CHAVisitor v(ParsedTemplates, &context);
+    CHAVisitor v(&context);
     v.TraverseDecl(context.getTranslationUnitDecl());
     v.CalculateValidTables();
   }

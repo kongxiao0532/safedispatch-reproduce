@@ -101,7 +101,7 @@ $(BUILDDIR)/SafeDispatchIns.so: inst-ir/SafeDispatchIns.cpp
 		$^ $(PLUGIN_LDFLAGS) $(LLVM_LDFLAGS_NOLIBS) -o $@
 
 # Clang LibTooling
-$(BUILDDIR)/CHATooling: cha-ast-tooling/CHATooling.cpp cha-ast-plugin/CHAVisitor.cpp
+$(BUILDDIR)/CHATooling: cha-ast-plugin/CHATooling.cpp cha-ast-plugin/CHAVisitor.cpp cha-ast-plugin/InstVisitor.cpp
 	$(CXX) $(CXXFLAGS) $(LLVM_CXXFLAGS) $(CLANG_INCLUDES) $^ \
 		$(CLANG_LIBS) $(LLVM_LDFLAGS) -o $@
 

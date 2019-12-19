@@ -1,4 +1,5 @@
 #include "CHAVisitor.h"
+#include "InstVisitor.h"
 
 
 
@@ -13,9 +14,11 @@ public:
   Rewriter * rewriter;
 
   void HandleTranslationUnit(ASTContext& context) override {
-    CHAVisitor v(&context, rewriter);
-    v.TraverseDecl(context.getTranslationUnitDecl());
-    v.CalculateValidTables();
+    CHAVisitor cv(&context);
+    cv.TraverseDecl(context.getTranslationUnitDecl());
+    cv.CalculateValidTables();
+    InstVisitor iv(&context, rewriter);
+    iv.TraverseDecl(context.getTranslationUnitDecl());
   }
 };
 

@@ -1,3 +1,4 @@
+#include "common.h"
 
 #include "clang/Frontend/FrontendPluginRegistry.h"
 #include "clang/AST/AST.h"
@@ -13,7 +14,6 @@ using namespace clang;
 
 class CHAVisitor : public RecursiveASTVisitor<CHAVisitor> {
 
-  const std::set<std::string> &ParsedTemplates;
   ASTContext *Context;
   /* maps class to its subclasses (including itself as a subclass) */
   std::map<CXXRecordDecl *, std::set<CXXRecordDecl *>> ClassSubclassMap;
@@ -40,9 +40,8 @@ class CHAVisitor : public RecursiveASTVisitor<CHAVisitor> {
 
 
 public:
-  CHAVisitor(const std::set<std::string> &ParsedTemplates,
-    ASTContext *Context)
-      : ParsedTemplates(ParsedTemplates), Context(Context) {}
+  CHAVisitor(ASTContext *Context)
+      : Context(Context) {}
 
   bool VisitCXXRecordDecl(CXXRecordDecl * CRD);
 

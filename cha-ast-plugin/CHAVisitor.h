@@ -1,5 +1,6 @@
 #include "common.h"
 
+
 #include "clang/Frontend/FrontendPluginRegistry.h"
 #include "clang/AST/AST.h"
 #include "clang/AST/DeclCXX.h"
@@ -10,7 +11,6 @@
 #include "llvm/Support/raw_ostream.h"
 using namespace clang;
 
-#define CUSTOM_DEBUG 0
 
 class CHAVisitor : public RecursiveASTVisitor<CHAVisitor> {
 

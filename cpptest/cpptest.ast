@@ -1,0 +1,294 @@
+TranslationUnitDecl 0x43e5878 <<invalid sloc>> <invalid sloc>
+|-TypedefDecl 0x43e6150 <<invalid sloc>> <invalid sloc> implicit __int128_t '__int128'
+| `-BuiltinType 0x43e5e10 '__int128'
+|-TypedefDecl 0x43e61c0 <<invalid sloc>> <invalid sloc> implicit __uint128_t 'unsigned __int128'
+| `-BuiltinType 0x43e5e30 'unsigned __int128'
+|-TypedefDecl 0x43e6528 <<invalid sloc>> <invalid sloc> implicit __NSConstantString '__NSConstantString_tag'
+| `-RecordType 0x43e62b0 '__NSConstantString_tag'
+|   `-CXXRecord 0x43e6218 '__NSConstantString_tag'
+|-TypedefDecl 0x43e65c0 <<invalid sloc>> <invalid sloc> implicit __builtin_ms_va_list 'char *'
+| `-PointerType 0x43e6580 'char *'
+|   `-BuiltinType 0x43e5910 'char'
+|-TypedefDecl 0x43f6ef8 <<invalid sloc>> <invalid sloc> implicit __builtin_va_list '__va_list_tag [1]'
+| `-ConstantArrayType 0x43f6ea0 '__va_list_tag [1]' 1 
+|   `-RecordType 0x43e66b0 '__va_list_tag'
+|     `-CXXRecord 0x43e6618 '__va_list_tag'
+|-CXXRecordDecl 0x43f6f50 <cpptest/classtest.cpp:4:1, line:21:1> line:4:7 referenced class A definition
+| |-DefinitionData polymorphic can_const_default_init
+| | |-DefaultConstructor exists non_trivial defaulted_is_constexpr
+| | |-CopyConstructor simple non_trivial has_const_param implicit_has_const_param
+| | |-MoveConstructor exists simple non_trivial needs_implicit
+| | |-CopyAssignment non_trivial has_const_param implicit_has_const_param
+| | |-MoveAssignment exists simple non_trivial needs_implicit
+| | `-Destructor simple irrelevant trivial
+| |-CXXRecordDecl 0x43f7068 <col:1, col:7> col:7 implicit class A
+| |-AccessSpecDecl 0x43f70f8 <line:5:5, col:11> col:5 public
+| |-CXXMethodDecl 0x43f7168 <line:6:5, line:8:5> line:6:18 used m1 'void ()' virtual
+| | `-CompoundStmt 0x43f78c8 <col:22, line:8:5>
+| |-CXXMethodDecl 0x43f72e8 <line:9:5, line:11:5> line:9:18 used m1 'void (int)' virtual
+| | |-ParmVarDecl 0x43f7220 <col:21, col:25> col:25 a 'int'
+| | `-CompoundStmt 0x43f78d8 <col:27, line:11:5>
+| |-CXXMethodDecl 0x43f73b0 <line:12:5, line:14:5> line:12:18 used m2 'void ()' virtual
+| | `-CompoundStmt 0x43f78e8 <col:22, line:14:5>
+| |-CXXMethodDecl 0x43f7470 <line:15:5, line:17:5> line:15:18 used m3 'void ()' virtual
+| | `-CompoundStmt 0x43f78f8 <col:22, line:17:5>
+| |-CXXMethodDecl 0x43f7530 <line:18:5, line:20:5> line:18:18 used foo 'void ()' virtual
+| | `-CompoundStmt 0x43f7908 <col:23, line:20:5>
+| |-CXXMethodDecl 0x43f7628 <line:4:7> col:7 implicit operator= 'A &(const A &)' inline default noexcept-unevaluated 0x43f7628
+| | `-ParmVarDecl 0x43f7738 <col:7> col:7 'const A &'
+| |-CXXDestructorDecl 0x43f77c0 <col:7> col:7 implicit ~A 'void ()' inline default trivial noexcept-unevaluated 0x43f77c0
+| |-CXXConstructorDecl 0x4424ab8 <col:7> col:7 implicit used A 'void () throw()' inline default
+| | `-CompoundStmt 0x4424d48 <col:7>
+| `-CXXConstructorDecl 0x4424b90 <col:7> col:7 implicit A 'void (const A &)' inline default noexcept-unevaluated 0x4424b90
+|   `-ParmVarDecl 0x4424ca8 <col:7> col:7 'const A &'
+|-CXXRecordDecl 0x43f7918 <line:23:1, line:34:1> line:23:7 referenced class B definition
+| |-DefinitionData polymorphic can_const_default_init
+| | |-DefaultConstructor exists non_trivial defaulted_is_constexpr
+| | |-CopyConstructor simple non_trivial has_const_param implicit_has_const_param
+| | |-MoveConstructor exists simple non_trivial needs_implicit
+| | |-CopyAssignment non_trivial has_const_param implicit_has_const_param
+| | |-MoveAssignment exists simple non_trivial needs_implicit
+| | `-Destructor simple irrelevant trivial
+| |-public 'A'
+| |-CXXRecordDecl 0x43f7a78 <col:1, col:7> col:7 implicit class B
+| |-AccessSpecDecl 0x43f7b08 <line:24:5, col:11> col:5 public
+| |-CXXMethodDecl 0x43f7b50 <line:25:5, line:27:5> line:25:10 used m1 'void ()'
+| | |-Overrides: [ 0x43f7168 A::m1 'void ()' ]
+| | `-CompoundStmt 0x4421bb8 <col:14, line:27:5>
+| |-CXXMethodDecl 0x43f7c98 <line:28:5, line:30:5> line:28:10 used m1 'void (int)'
+| | |-Overrides: [ 0x43f72e8 A::m1 'void (int)' ]
+| | |-ParmVarDecl 0x43f7c08 <col:13, col:17> col:17 a 'int'
+| | `-CompoundStmt 0x4421bc8 <col:19, line:30:5>
+| |-CXXMethodDecl 0x43f7d60 <line:31:5, line:33:5> line:31:10 used foo 'void ()'
+| | |-Overrides: [ 0x43f7530 A::foo 'void ()' ]
+| | `-CompoundStmt 0x4421bd8 <col:15, line:33:5>
+| |-CXXMethodDecl 0x4421918 <line:23:7> col:7 implicit operator= 'B &(const B &)' inline default noexcept-unevaluated 0x4421918
+| | `-ParmVarDecl 0x4421a28 <col:7> col:7 'const B &'
+| |-CXXDestructorDecl 0x4421ab0 <col:7> col:7 implicit ~B 'void ()' inline default trivial noexcept-unevaluated 0x4421ab0
+| |-CXXConstructorDecl 0x4426918 <col:7> col:7 implicit used B 'void () throw()' inline default
+| | |-CXXCtorInitializer 'A'
+| | | `-CXXConstructExpr 0x4426b78 <col:7> 'A' 'void () throw()'
+| | `-CompoundStmt 0x4426be0 <col:7>
+| `-CXXConstructorDecl 0x44269f0 <col:7> col:7 implicit B 'void (const B &)' inline default noexcept-unevaluated 0x44269f0
+|   `-ParmVarDecl 0x4426b08 <col:7> col:7 'const B &'
+|-CXXRecordDecl 0x4421be8 <line:36:1, line:41:1> line:36:7 referenced class C definition
+| |-DefinitionData polymorphic can_const_default_init
+| | |-DefaultConstructor exists non_trivial defaulted_is_constexpr
+| | |-CopyConstructor simple non_trivial has_const_param implicit_has_const_param
+| | |-MoveConstructor exists simple non_trivial needs_implicit
+| | |-CopyAssignment non_trivial has_const_param implicit_has_const_param
+| | |-MoveAssignment exists simple non_trivial needs_implicit
+| | `-Destructor simple irrelevant trivial
+| |-public 'A'
+| |-CXXRecordDecl 0x4421d48 <col:1, col:7> col:7 implicit class C
+| |-AccessSpecDecl 0x4421dd8 <line:37:5, col:11> col:5 public
+| |-CXXMethodDecl 0x4421e20 <line:38:5, line:40:5> line:38:10 used m1 'void ()'
+| | |-Overrides: [ 0x43f7168 A::m1 'void ()' ]
+| | `-CompoundStmt 0x44221b8 <col:14, line:40:5>
+| |-CXXMethodDecl 0x4421f18 <line:36:7> col:7 implicit operator= 'C &(const C &)' inline default noexcept-unevaluated 0x4421f18
+| | `-ParmVarDecl 0x4422028 <col:7> col:7 'const C &'
+| |-CXXDestructorDecl 0x44220b0 <col:7> col:7 implicit ~C 'void ()' inline default trivial noexcept-unevaluated 0x44220b0
+| |-CXXConstructorDecl 0x4424f88 <col:7> col:7 implicit used C 'void () throw()' inline default
+| | |-CXXCtorInitializer 'A'
+| | | `-CXXConstructExpr 0x44251e8 <col:7> 'A' 'void () throw()'
+| | `-CompoundStmt 0x4425250 <col:7>
+| `-CXXConstructorDecl 0x4425060 <col:7> col:7 implicit C 'void (const C &)' inline default noexcept-unevaluated 0x4425060
+|   `-ParmVarDecl 0x4425178 <col:7> col:7 'const C &'
+|-CXXRecordDecl 0x44221c8 <line:43:1, line:48:1> line:43:7 referenced class D definition
+| |-DefinitionData polymorphic can_const_default_init
+| | |-DefaultConstructor exists non_trivial defaulted_is_constexpr
+| | |-CopyConstructor simple non_trivial has_const_param implicit_has_const_param
+| | |-MoveConstructor exists simple non_trivial needs_implicit
+| | |-CopyAssignment non_trivial has_const_param implicit_has_const_param
+| | |-MoveAssignment exists simple non_trivial needs_implicit
+| | `-Destructor simple irrelevant trivial
+| |-public 'C'
+| |-CXXRecordDecl 0x4422328 <col:1, col:7> col:7 implicit class D
+| |-AccessSpecDecl 0x44223b8 <line:44:5, col:11> col:5 public
+| |-CXXMethodDecl 0x4422400 <line:45:5, line:47:5> line:45:10 used m2 'void ()'
+| | |-Overrides: [ 0x43f73b0 A::m2 'void ()' ]
+| | `-CompoundStmt 0x4422798 <col:14, line:47:5>
+| |-CXXMethodDecl 0x44224f8 <line:43:7> col:7 implicit operator= 'D &(const D &)' inline default noexcept-unevaluated 0x44224f8
+| | `-ParmVarDecl 0x4422608 <col:7> col:7 'const D &'
+| |-CXXDestructorDecl 0x4422690 <col:7> col:7 implicit ~D 'void ()' inline default trivial noexcept-unevaluated 0x4422690
+| |-CXXConstructorDecl 0x4427020 <col:7> col:7 implicit used D 'void () throw()' inline default
+| | |-CXXCtorInitializer 'C'
+| | | `-CXXConstructExpr 0x4427288 <col:7> 'C' 'void () throw()'
+| | `-CompoundStmt 0x44272f0 <col:7>
+| `-CXXConstructorDecl 0x4427100 <col:7> col:7 implicit D 'void (const D &)' inline default noexcept-unevaluated 0x4427100
+|   `-ParmVarDecl 0x4427218 <col:7> col:7 'const D &'
+|-CXXRecordDecl 0x44227a8 <line:50:1, line:59:1> line:50:7 referenced class E definition
+| |-DefinitionData polymorphic can_const_default_init
+| | |-DefaultConstructor exists non_trivial defaulted_is_constexpr
+| | |-CopyConstructor simple non_trivial has_const_param implicit_has_const_param
+| | |-MoveConstructor exists simple non_trivial needs_implicit
+| | |-CopyAssignment non_trivial has_const_param implicit_has_const_param
+| | |-MoveAssignment exists simple non_trivial needs_implicit
+| | `-Destructor simple irrelevant trivial
+| |-public 'C'
+| |-CXXRecordDecl 0x4423138 <col:1, col:7> col:7 implicit class E
+| |-CXXRecordDecl 0x44231c8 <line:51:5, line:54:5> line:51:11 class AInsideE definition
+| | |-DefinitionData pass_in_registers standard_layout trivially_copyable trivial literal
+| | | |-DefaultConstructor exists trivial needs_implicit
+| | | |-CopyConstructor simple trivial has_const_param needs_implicit implicit_has_const_param
+| | | |-MoveConstructor exists simple trivial needs_implicit
+| | | |-CopyAssignment trivial has_const_param needs_implicit implicit_has_const_param
+| | | |-MoveAssignment exists simple trivial needs_implicit
+| | | `-Destructor simple irrelevant trivial needs_implicit
+| | |-CXXRecordDecl 0x44232e8 <col:5, col:11> col:11 implicit class AInsideE
+| | |-AccessSpecDecl 0x4423378 <line:52:9, col:16> col:9 private
+| | `-FieldDecl 0x44233b8 <line:53:13, col:17> col:17 _123 'int'
+| |-AccessSpecDecl 0x4423420 <line:55:5, col:11> col:5 public
+| |-CXXMethodDecl 0x4423468 <line:56:5, line:58:5> line:56:10 used m3 'void ()'
+| | |-Overrides: [ 0x43f7470 A::m3 'void ()' ]
+| | `-CompoundStmt 0x4423808 <col:14, line:58:5>
+| |-CXXMethodDecl 0x4423568 <line:50:7> col:7 implicit operator= 'E &(const E &)' inline default noexcept-unevaluated 0x4423568
+| | `-ParmVarDecl 0x4423678 <col:7> col:7 'const E &'
+| |-CXXDestructorDecl 0x4423700 <col:7> col:7 implicit ~E 'void ()' inline default trivial noexcept-unevaluated 0x4423700
+| |-CXXConstructorDecl 0x44254b0 <col:7> col:7 implicit used E 'void () throw()' inline default
+| | |-CXXCtorInitializer 'C'
+| | | `-CXXConstructExpr 0x4425718 <col:7> 'C' 'void () throw()'
+| | `-CompoundStmt 0x4425780 <col:7>
+| `-CXXConstructorDecl 0x4425590 <col:7> col:7 implicit E 'void (const E &)' inline default noexcept-unevaluated 0x4425590
+|   `-ParmVarDecl 0x44256a8 <col:7> col:7 'const E &'
+|-FunctionDecl 0x4423870 <line:63:1, line:101:1> line:63:5 main 'int ()'
+| `-CompoundStmt 0x4429380 <col:11, line:101:1>
+|   |-DeclStmt 0x44239f8 <line:65:5, col:13>
+|   | `-VarDecl 0x4423990 <col:5, col:8> col:8 used testA 'A *'
+|   |-BinaryOperator 0x4424dc0 <line:66:5, col:19> 'A *' lvalue '='
+|   | |-DeclRefExpr 0x4423a10 <col:5> 'A *' lvalue Var 0x4423990 'testA' 'A *'
+|   | `-CXXNewExpr 0x4424d80 <col:13, col:19> 'A *' Function 0x4423cb0 'operator new' 'void *(unsigned long) throw(std::bad_alloc)'
+|   |   `-CXXConstructExpr 0x4424d58 <col:17, col:19> 'A' 'void () throw()' zeroing
+|   |-CXXMemberCallExpr 0x4424e48 <line:67:5, col:15> 'void'
+|   | `-MemberExpr 0x4424e18 <col:5, col:12> '<bound member function type>' ->m3 0x43f7470
+|   |   `-ImplicitCastExpr 0x4424e00 <col:5> 'A *' <LValueToRValue>
+|   |     `-DeclRefExpr 0x4424de0 <col:5> 'A *' lvalue Var 0x4423990 'testA' 'A *'
+|   |-BinaryOperator 0x44252e8 <line:68:5, col:19> 'A *' lvalue '='
+|   | |-DeclRefExpr 0x4424e68 <col:5> 'A *' lvalue Var 0x4423990 'testA' 'A *'
+|   | `-ImplicitCastExpr 0x44252c8 <col:13, col:19> 'A *' <DerivedToBase (A)>
+|   |   `-CXXNewExpr 0x4425288 <col:13, col:19> 'C *' Function 0x4423cb0 'operator new' 'void *(unsigned long) throw(std::bad_alloc)'
+|   |     `-CXXConstructExpr 0x4425260 <col:17, col:19> 'C' 'void () throw()' zeroing
+|   |-CXXMemberCallExpr 0x4425370 <line:69:5, col:15> 'void'
+|   | `-MemberExpr 0x4425340 <col:5, col:12> '<bound member function type>' ->m3 0x43f7470
+|   |   `-ImplicitCastExpr 0x4425328 <col:5> 'A *' <LValueToRValue>
+|   |     `-DeclRefExpr 0x4425308 <col:5> 'A *' lvalue Var 0x4423990 'testA' 'A *'
+|   |-BinaryOperator 0x4425820 <line:70:5, col:19> 'A *' lvalue '='
+|   | |-DeclRefExpr 0x4425390 <col:5> 'A *' lvalue Var 0x4423990 'testA' 'A *'
+|   | `-ImplicitCastExpr 0x44257f8 <col:13, col:19> 'A *' <DerivedToBase (C -> A)>
+|   |   `-CXXNewExpr 0x44257b8 <col:13, col:19> 'E *' Function 0x4423cb0 'operator new' 'void *(unsigned long) throw(std::bad_alloc)'
+|   |     `-CXXConstructExpr 0x4425790 <col:17, col:19> 'E' 'void () throw()' zeroing
+|   |-CXXMemberCallExpr 0x44258a8 <line:71:5, col:15> 'void'
+|   | `-MemberExpr 0x4425878 <col:5, col:12> '<bound member function type>' ->m3 0x43f7470
+|   |   `-ImplicitCastExpr 0x4425860 <col:5> 'A *' <LValueToRValue>
+|   |     `-DeclRefExpr 0x4425840 <col:5> 'A *' lvalue Var 0x4423990 'testA' 'A *'
+|   |-DeclStmt 0x4426580 <line:73:5, col:24>
+|   | `-VarDecl 0x4426518 <col:5, col:23> col:15 used f 'void (A::*)()'
+|   |-BinaryOperator 0x4426638 <line:74:5, col:13> 'void (A::*)()' lvalue '='
+|   | |-DeclRefExpr 0x4426598 <col:5> 'void (A::*)()' lvalue Var 0x4426518 'f' 'void (A::*)()'
+|   | `-UnaryOperator 0x4426620 <col:9, col:13> 'void (A::*)()' prefix '&' cannot overflow
+|   |   `-DeclRefExpr 0x44265f0 <col:10, col:13> 'void ()' CXXMethod 0x43f7530 'foo' 'void ()'
+|   |-BinaryOperator 0x4426708 <line:75:5, col:19> 'A *' lvalue '='
+|   | |-DeclRefExpr 0x4426658 <col:5> 'A *' lvalue Var 0x4423990 'testA' 'A *'
+|   | `-CXXNewExpr 0x44266c8 <col:13, col:19> 'A *' Function 0x4423cb0 'operator new' 'void *(unsigned long) throw(std::bad_alloc)'
+|   |   `-CXXConstructExpr 0x44266a0 <col:17, col:19> 'A' 'void () throw()' zeroing
+|   |-CXXMemberCallExpr 0x44267d8 <line:76:5, col:17> 'void'
+|   | `-ParenExpr 0x44267b8 <col:5, col:15> '<bound member function type>'
+|   |   `-BinaryOperator 0x4426798 <col:6, col:14> '<bound member function type>' '->*'
+|   |     |-ImplicitCastExpr 0x4426768 <col:6> 'A *' <LValueToRValue>
+|   |     | `-DeclRefExpr 0x4426728 <col:6> 'A *' lvalue Var 0x4423990 'testA' 'A *'
+|   |     `-ImplicitCastExpr 0x4426780 <col:14> 'void (A::*)()' <LValueToRValue>
+|   |       `-DeclRefExpr 0x4426748 <col:14> 'void (A::*)()' lvalue Var 0x4426518 'f' 'void (A::*)()'
+|   |-BinaryOperator 0x4426c78 <line:77:5, col:19> 'A *' lvalue '='
+|   | |-DeclRefExpr 0x44267f8 <col:5> 'A *' lvalue Var 0x4423990 'testA' 'A *'
+|   | `-ImplicitCastExpr 0x4426c58 <col:13, col:19> 'A *' <DerivedToBase (A)>
+|   |   `-CXXNewExpr 0x4426c18 <col:13, col:19> 'B *' Function 0x4423cb0 'operator new' 'void *(unsigned long) throw(std::bad_alloc)'
+|   |     `-CXXConstructExpr 0x4426bf0 <col:17, col:19> 'B' 'void () throw()' zeroing
+|   |-CXXMemberCallExpr 0x4426d48 <line:78:5, col:17> 'void'
+|   | `-ParenExpr 0x4426d28 <col:5, col:15> '<bound member function type>'
+|   |   `-BinaryOperator 0x4426d08 <col:6, col:14> '<bound member function type>' '->*'
+|   |     |-ImplicitCastExpr 0x4426cd8 <col:6> 'A *' <LValueToRValue>
+|   |     | `-DeclRefExpr 0x4426c98 <col:6> 'A *' lvalue Var 0x4423990 'testA' 'A *'
+|   |     `-ImplicitCastExpr 0x4426cf0 <col:14> 'void (A::*)()' <LValueToRValue>
+|   |       `-DeclRefExpr 0x4426cb8 <col:14> 'void (A::*)()' lvalue Var 0x4426518 'f' 'void (A::*)()'
+|   |-DeclStmt 0x4426e08 <line:80:5, col:8>
+|   | `-VarDecl 0x4426d78 <col:5, col:7> col:7 used a 'A' callinit
+|   |   `-CXXConstructExpr 0x4426de0 <col:7> 'A' 'void () throw()'
+|   |-DeclStmt 0x4426ec0 <line:81:5, col:8>
+|   | `-VarDecl 0x4426e30 <col:5, col:7> col:7 used b 'B' callinit
+|   |   `-CXXConstructExpr 0x4426e98 <col:7> 'B' 'void () throw()'
+|   |-DeclStmt 0x4426f78 <line:82:5, col:8>
+|   | `-VarDecl 0x4426ee8 <col:5, col:7> col:7 used c 'C' callinit
+|   |   `-CXXConstructExpr 0x4426f50 <col:7> 'C' 'void () throw()'
+|   |-DeclStmt 0x4427328 <line:83:5, col:8>
+|   | `-VarDecl 0x4426fa0 <col:5, col:7> col:7 used d 'D' callinit
+|   |   `-CXXConstructExpr 0x4427300 <col:7> 'D' 'void () throw()'
+|   |-DeclStmt 0x4428ad8 <line:84:5, col:8>
+|   | `-VarDecl 0x4427350 <col:5, col:7> col:7 used e 'E' callinit
+|   |   `-CXXConstructExpr 0x4428ab0 <col:7> 'E' 'void () throw()'
+|   |-CXXMemberCallExpr 0x4428ba0 <line:85:5, col:10> 'void'
+|   | `-MemberExpr 0x4428b70 <col:5, col:7> '<bound member function type>' .m1 0x43f7168
+|   |   `-DeclRefExpr 0x4428af0 <col:5> 'A' lvalue Var 0x4426d78 'a' 'A'
+|   |-CXXMemberCallExpr 0x4428c10 <line:86:5, col:10> 'void'
+|   | `-MemberExpr 0x4428be0 <col:5, col:7> '<bound member function type>' .m2 0x43f73b0
+|   |   `-DeclRefExpr 0x4428bc0 <col:5> 'A' lvalue Var 0x4426d78 'a' 'A'
+|   |-CXXMemberCallExpr 0x4428c80 <line:87:5, col:10> 'void'
+|   | `-MemberExpr 0x4428c50 <col:5, col:7> '<bound member function type>' .m3 0x43f7470
+|   |   `-DeclRefExpr 0x4428c30 <col:5> 'A' lvalue Var 0x4426d78 'a' 'A'
+|   |-CXXMemberCallExpr 0x4428d50 <line:88:5, col:10> 'void'
+|   | `-MemberExpr 0x4428d20 <col:5, col:7> '<bound member function type>' .m1 0x43f7b50
+|   |   `-DeclRefExpr 0x4428ca0 <col:5> 'B' lvalue Var 0x4426e30 'b' 'B'
+|   |-CXXMemberCallExpr 0x4428dc0 <line:89:5, col:10> 'void'
+|   | `-MemberExpr 0x4428d90 <col:5, col:7> '<bound member function type>' .m2 0x43f73b0
+|   |   `-ImplicitCastExpr 0x4428de0 <col:5> 'A' lvalue <UncheckedDerivedToBase (A)>
+|   |     `-DeclRefExpr 0x4428d70 <col:5> 'B' lvalue Var 0x4426e30 'b' 'B'
+|   |-CXXMemberCallExpr 0x4428e50 <line:90:5, col:10> 'void'
+|   | `-MemberExpr 0x4428e20 <col:5, col:7> '<bound member function type>' .m3 0x43f7470
+|   |   `-ImplicitCastExpr 0x4428e70 <col:5> 'A' lvalue <UncheckedDerivedToBase (A)>
+|   |     `-DeclRefExpr 0x4428e00 <col:5> 'B' lvalue Var 0x4426e30 'b' 'B'
+|   |-CXXMemberCallExpr 0x4428ee0 <line:91:5, col:10> 'void'
+|   | `-MemberExpr 0x4428eb0 <col:5, col:7> '<bound member function type>' .m1 0x4421e20
+|   |   `-DeclRefExpr 0x4428e90 <col:5> 'C' lvalue Var 0x4426ee8 'c' 'C'
+|   |-CXXMemberCallExpr 0x4428f50 <line:92:5, col:10> 'void'
+|   | `-MemberExpr 0x4428f20 <col:5, col:7> '<bound member function type>' .m2 0x43f73b0
+|   |   `-ImplicitCastExpr 0x4428f70 <col:5> 'A' lvalue <UncheckedDerivedToBase (A)>
+|   |     `-DeclRefExpr 0x4428f00 <col:5> 'C' lvalue Var 0x4426ee8 'c' 'C'
+|   |-CXXMemberCallExpr 0x4428fe0 <line:93:5, col:10> 'void'
+|   | `-MemberExpr 0x4428fb0 <col:5, col:7> '<bound member function type>' .m3 0x43f7470
+|   |   `-ImplicitCastExpr 0x4429000 <col:5> 'A' lvalue <UncheckedDerivedToBase (A)>
+|   |     `-DeclRefExpr 0x4428f90 <col:5> 'C' lvalue Var 0x4426ee8 'c' 'C'
+|   |-CXXMemberCallExpr 0x4429070 <line:94:5, col:10> 'void'
+|   | `-MemberExpr 0x4429040 <col:5, col:7> '<bound member function type>' .m1 0x4421e20
+|   |   `-ImplicitCastExpr 0x4429090 <col:5> 'C' lvalue <UncheckedDerivedToBase (C)>
+|   |     `-DeclRefExpr 0x4429020 <col:5> 'D' lvalue Var 0x4426fa0 'd' 'D'
+|   |-CXXMemberCallExpr 0x4429100 <line:95:5, col:10> 'void'
+|   | `-MemberExpr 0x44290d0 <col:5, col:7> '<bound member function type>' .m2 0x4422400
+|   |   `-DeclRefExpr 0x44290b0 <col:5> 'D' lvalue Var 0x4426fa0 'd' 'D'
+|   |-CXXMemberCallExpr 0x4429170 <line:96:5, col:10> 'void'
+|   | `-MemberExpr 0x4429140 <col:5, col:7> '<bound member function type>' .m3 0x43f7470
+|   |   `-ImplicitCastExpr 0x4429190 <col:5> 'A' lvalue <UncheckedDerivedToBase (C -> A)>
+|   |     `-DeclRefExpr 0x4429120 <col:5> 'D' lvalue Var 0x4426fa0 'd' 'D'
+|   |-CXXMemberCallExpr 0x4429208 <line:97:5, col:10> 'void'
+|   | `-MemberExpr 0x44291d8 <col:5, col:7> '<bound member function type>' .m1 0x4421e20
+|   |   `-ImplicitCastExpr 0x4429228 <col:5> 'C' lvalue <UncheckedDerivedToBase (C)>
+|   |     `-DeclRefExpr 0x44291b8 <col:5> 'E' lvalue Var 0x4427350 'e' 'E'
+|   |-CXXMemberCallExpr 0x4429298 <line:98:5, col:10> 'void'
+|   | `-MemberExpr 0x4429268 <col:5, col:7> '<bound member function type>' .m2 0x43f73b0
+|   |   `-ImplicitCastExpr 0x44292b8 <col:5> 'A' lvalue <UncheckedDerivedToBase (C -> A)>
+|   |     `-DeclRefExpr 0x4429248 <col:5> 'E' lvalue Var 0x4427350 'e' 'E'
+|   |-CXXMemberCallExpr 0x4429330 <line:99:5, col:10> 'void'
+|   | `-MemberExpr 0x4429300 <col:5, col:7> '<bound member function type>' .m3 0x4423468
+|   |   `-DeclRefExpr 0x44292e0 <col:5> 'E' lvalue Var 0x4427350 'e' 'E'
+|   `-ReturnStmt 0x4429370 <line:100:5, col:12>
+|     `-IntegerLiteral 0x4429350 <col:12> 'int' 0
+|-FunctionDecl 0x4423cb0 <<invalid sloc>> <invalid sloc> implicit used operator new 'void *(unsigned long) throw(std::bad_alloc)'
+| |-ParmVarDecl 0x4423d90 <<invalid sloc>> <invalid sloc> implicit 'unsigned long'
+| `-VisibilityAttr 0x4423d50 <<invalid sloc>> Implicit Default
+|-FunctionDecl 0x4423e00 <<invalid sloc>> <invalid sloc> implicit operator new[] 'void *(unsigned long) throw(std::bad_alloc)'
+| |-ParmVarDecl 0x4423ee0 <<invalid sloc>> <invalid sloc> implicit 'unsigned long'
+| `-VisibilityAttr 0x4423ea0 <<invalid sloc>> Implicit Default
+|-FunctionDecl 0x4423fb0 <<invalid sloc>> <invalid sloc> implicit operator delete 'void (void *) throw()'
+| |-ParmVarDecl 0x4424090 <<invalid sloc>> <invalid sloc> implicit 'void *'
+| `-VisibilityAttr 0x4424050 <<invalid sloc>> Implicit Default
+`-FunctionDecl 0x4424950 <<invalid sloc>> <invalid sloc> implicit operator delete[] 'void (void *) throw()'
+  |-ParmVarDecl 0x4424a30 <<invalid sloc>> <invalid sloc> implicit 'void *'
+  `-VisibilityAttr 0x44249f0 <<invalid sloc>> Implicit Default

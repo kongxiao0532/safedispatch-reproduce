@@ -1,5 +1,7 @@
 #include "common.h"
 
+#include <sstream>
+#include <string>
 
 #include "clang/AST/AST.h"
 #include "clang/AST/DeclCXX.h"
@@ -20,13 +22,13 @@ class InstVisitor : public RecursiveASTVisitor<InstVisitor> {
   ASTContext * Context;
   Rewriter * rewriter;
   std::map<CXXRecordDecl *,
-    std::map<std::string, std::set<CXXMethodDecl *>>> ValidM;
-  // TODO: ValidVT;
+    std::map<std::string, int>> ValidMInt;
 
 
 public:
-  InstVisitor(ASTContext *Context, Rewriter * rewriter)
-      : Context(Context), rewriter(rewriter) {}
+  InstVisitor(ASTContext *Context, Rewriter * rewriter,
+    std::map<CXXRecordDecl *, std::map<std::string, int>> &ValidMInt)
+      : Context(Context), rewriter(rewriter), ValidMInt(ValidMInt) {}
 
   bool VisitCXXMemberCallExpr(CXXMemberCallExpr * CMCE);
 

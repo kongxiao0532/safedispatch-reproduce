@@ -1,13 +1,13 @@
+#ifndef INS_LIB
+#define INS_LIB
 #include <cstdlib>
-#include <vector>
+#include <map>
 #include <set>
 
 namespace safedispatch{
-    std::vector<std::set<void *>> ValidM;
+    std::map<int, std::set<void *>> ValidM;
 
     void insert(int classAndMethod, void * methodPtr){
-        if(classAndMethod > (ValidM.size() - 1))
-            ValidM.resize(classAndMethod + 1);
         ValidM[classAndMethod].insert(methodPtr);
     }
 
@@ -21,3 +21,4 @@ namespace safedispatch{
         std::abort();
     }
 };
+#endif

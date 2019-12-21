@@ -95,7 +95,7 @@ public:
       i++) {
         const ParmVarDecl * PVD = *i;
         if(*(result.end() - 1) != '(')
-          result += ",";
+          result += ", ";
         result += PVD->getOriginalType().getAsString();
       }
       result += ")";
@@ -108,7 +108,7 @@ public:
 
 int main(int argc, char *argv[]) {
   if (argc != 2 && argc != 3) {
-    llvm::outs() << "Usage: ./CHATooling <filename> [<output_filename>]\n";
+    llvm::errs() << "Usage: ./CHATooling <filename> [<output_filename>]\n";
     return 1;
   }
 
@@ -148,7 +148,7 @@ int main(int argc, char *argv[]) {
 
   // insert #include
   std::stringstream stream;
-  stream << "extern void safepatch::check(int , void * );\n";
+  stream << "extern void check(int , void * );\n";
   rewriter.InsertText(sourceManager.getComposedLoc(fileID, 0), stream.str(), true, true);
 
   // Create an AST consumer instance which is going to get called by
@@ -171,7 +171,7 @@ int main(int argc, char *argv[]) {
   instrumentedFile.open(instrumentedFileName);
   instrumentedFile << std::string(RewriteBuf->begin(), RewriteBuf->end());
   instrumentedFile.close();
-  llvm::outs() << "Instrumented file has been output to " << instrumentedFileName << "\n";
-  llvm::outs() << "ValidM has been output to " << validMOutputFileName << "\n";
+  llvm::errs() << "Instrumented file has been output to " << instrumentedFileName << "\n";
+  llvm::errs() << "ValidM has been output to " << validMOutputFileName << "\n";
   return 0;
 }

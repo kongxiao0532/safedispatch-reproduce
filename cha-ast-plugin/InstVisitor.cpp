@@ -5,14 +5,22 @@ bool InstVisitor::VisitCXXMemberCallExpr(CXXMemberCallExpr * CMCE){
   if(!CMCE->getMethodDecl() || !CMCE->getMethodDecl()->isVirtual()){
     return true;
   }
+  // only deal with dyanmic calls
+  if(!CMCE->getImplicitObjectArgument()->getType().mayBeDynamicClass()){
+    return true;
+  }
+  // MemberExpr * ME = dyn_cast<MemberExpr>(CMCE->getCallee());
+  // if(!ME)
+  //   return true;
+  // if(ME->getImplicitObjectArgument())
   #ifdef CUSTOM_DEBUG
   if(CMCE->getMethodDecl() != nullptr){
-    llvm::outs() << "Inside CXXMemberCallExpr: " <<
+    llvm::errs() << "Inside CXXMemberCallExpr: " <<
       CMCE->getObjectType().getAsString();
-    llvm::outs() << CMCE->getMethodDecl()->getNameAsString() << '\n';
+    llvm::errs() << CMCE->getMethodDecl()->getNameAsString() << '\n';
   }else{
     // TODO: function pointer
-    llvm::outs() << "Inside CXXMemberCallExpr via Function Pointers: " <<
+    llvm::errs() << "Inside CXXMemberCallExpr via Function Pointers: " <<
       CMCE->getObjectType().getAsString();
   }
   #endif

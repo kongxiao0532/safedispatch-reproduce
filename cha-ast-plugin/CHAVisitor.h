@@ -1,4 +1,4 @@
-#include "common.h"
+#include "../common.h"
 
 
 #include "clang/Frontend/FrontendPluginRegistry.h"

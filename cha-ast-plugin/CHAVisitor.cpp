@@ -57,16 +57,16 @@ void CHAVisitor::CalculateValidTables() {
 
 #ifdef CUSTOM_DEBUG
   void CHAVisitor::printValidM(){
-    llvm::outs() << "Outputting ValidM:\n";
+    llvm::errs() << "Outputting ValidM:\n";
     for(auto i1 = ValidM.begin(), e1 = ValidM.end(); i1 != e1; i1++){
-      llvm::outs() << i1->first->getNameAsString();
+      llvm::errs() << i1->first->getNameAsString();
       for(auto i2 = i1->second.begin(), e2 = i1->second.end(); i2 != e2; i2++){
-        llvm::outs() << '\t' << i2->first << ": ";
+        llvm::errs() << '\t' << i2->first << ": ";
         for(CXXMethodDecl * Method : i2->second){
-          llvm::outs() << this->GetFunctionAsString(Method, true, true) << ", ";
+          llvm::errs() << this->GetFunctionAsString(Method, true, true) << ", ";
         }
       }
-      llvm::outs() << '\n';
+      llvm::errs() << '\n';
     }
   }
 #endif
@@ -121,7 +121,7 @@ void CHAVisitor::CalculateValidM(){
  * Print CRD's class name
  */
 void CHAVisitor::PrintClass(CXXRecordDecl * CRD){
-  llvm::outs() << "Inside VisitCXXRecordDecl: "
+  llvm::errs() << "Inside VisitCXXRecordDecl: "
     << CRD->getQualifiedNameAsString() << '\n';
 }
 
@@ -134,7 +134,7 @@ void CHAVisitor::PrintBaseClass(CXXRecordDecl * CRD){
     i != e;
     i++) {
     CXXRecordDecl *BaseCRD = i->getType()->getAsCXXRecordDecl();
-    llvm::outs() << "\tBase class: "
+    llvm::errs() << "\tBase class: "
       << BaseCRD->getNameAsString() << '\n';
   }
 }
@@ -150,7 +150,7 @@ void CHAVisitor::PrintVirtualMethod(CXXRecordDecl * CRD){
     Decl *D = *i;
     if(CXXMethodDecl *CMD = dyn_cast<CXXMethodDecl>(D)){
       if(CMD->isVirtual())
-        llvm::outs() << "\tVirtual Method: "
+        llvm::errs() << "\tVirtual Method: "
         << this->GetFunctionAsString(CMD, true, true) << '\n';
     }
   }

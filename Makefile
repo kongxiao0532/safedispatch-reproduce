@@ -96,7 +96,7 @@ make_builddir:
 	@test -d $(BUILDDIR) || mkdir $(BUILDDIR)
 
 # LLVM pass
-$(BUILDDIR)/SafeDispatchIns.so: inst-ir/InsertMethodAddrPass.cpp
+$(BUILDDIR)/SafeDispatchIns.so: inst-ir/SafeDispatchIns.cpp
 	$(CXX) $(PLUGIN_CXXFLAGS) $(CXXFLAGS) $(LLVM_CXXFLAGS) \
 		$^ $(PLUGIN_LDFLAGS) $(LLVM_LDFLAGS_NOLIBS) -o $@
 

@@ -11,10 +11,8 @@ export INSTRUMENTED_1_SOURCE=./build/instrumented.cpp
 # source + library
 export MERGE_BITCODE=merge.bc
 export MERGE_BITCODE_TEXT=merge.ll
-export INSTRUMENTED_2_BITCODE=instrumented2.bc
-export INSTRUMENTED_2_BITCODE_TEXT=instrumented2.ll
-export INSTRUMENTED_3_BITCODE=instrumented3.bc
-export INSTRUMENTED_3_BITCODE_TEXT=instrumented3.ll
+export INSTRUMENTED_BITCODE=instrumented.bc
+export INSTRUMENTED_BITCODE_TEXT=instrumented.ll
 export BUILD_DIR=./build/
 
 echo 'Building project...'
@@ -31,6 +29,6 @@ llvm-link ${BUILD_DIR}/${LIB_BITCODE} ${BUILD_DIR}/${SOURCE_BITCODE} > ${BUILD_D
 # disassemble bitcode to text for debugging
 llvm-dis ${BUILD_DIR}/${MERGE_BITCODE} -o ${BUILD_DIR}/${MERGE_BITCODE_TEXT}
 # LLVM pass (2nd Instrumentation)
-opt -load build/SafeDispatchIns.so -InsertMethodAddrPass ${BUILD_DIR}/${MERGE_BITCODE} > ${BUILD_DIR}/${INSTRUMENTED_2_BITCODE}
+opt -load build/SafeDispatchIns.so -SafeDispatchIns ${BUILD_DIR}/${MERGE_BITCODE} > ${BUILD_DIR}/${INSTRUMENTED_BITCODE}
 # disassemble bitcode to text for debugging
-llvm-dis ${BUILD_DIR}/${INSTRUMENTED_2_BITCODE} -o ${BUILD_DIR}/${INSTRUMENTED_2_BITCODE_TEXT}
+llvm-dis ${BUILD_DIR}/${INSTRUMENTED_BITCODE} -o ${BUILD_DIR}/${INSTRUMENTED_BITCODE_TEXT}

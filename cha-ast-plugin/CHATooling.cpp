@@ -171,7 +171,9 @@ int main(int argc, char *argv[]) {
   instrumentedFile.open(instrumentedFileName);
   instrumentedFile << std::string(RewriteBuf->begin(), RewriteBuf->end());
   instrumentedFile.close();
+  #ifdef CUSTOM_DEBUG
   llvm::errs() << "Instrumented file has been output to " << instrumentedFileName << "\n";
   llvm::errs() << "ValidM has been output to " << validMOutputFileName << "\n";
+  #endif
   return 0;
 }

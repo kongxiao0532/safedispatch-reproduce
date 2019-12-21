@@ -67,7 +67,9 @@ char SafeDispatchIns::ID = 0;
  * Constructor
  */
 SafeDispatchIns::SafeDispatchIns() : ModulePass(ID) {
+  #ifdef CUSTOM_DEBUG
   errs() << "Running SafeDispatchIns...\n";
+  #endif
   const std::string validMPath = "./build/validm.config";
   loadValidM(validMPath);
 }
@@ -97,8 +99,8 @@ bool SafeDispatchIns::runOnModule(Module &M) {
     return false;
   #ifdef CUSTOM_DEBUG
   // print for debugging
-  for(Function &F : M)
-    errs() << F.getName() << '\n';
+  // for(Function &F : M)
+  //   errs() << F.getName() << '\n';
   #endif
 
   // Instrumentation 1: insert pointer  vmethods' addresses
@@ -141,28 +143,14 @@ bool SafeDispatchIns::instrumentCheck(Module &M){
  * and refill the second argument value.
  */
 bool SafeDispatchIns::dealWithIndirectCall(CallInst * checkCall){
-  // get all seven instructions
-  Instruction * i1 = checkCall->getNextNonDebugInstruction();
-  if(!i1) return false;
-  Instruction * i2 = i1->getNextNonDebugInstruction();
-  if(!i2) return false;
-  Instruction * i3 = i2->getNextNonDebugInstruction();
-  if(!i3) return false;
-  Instruction * i4 = i3->getNextNonDebugInstruction();
-  if(!i4) return false;
-  Instruction * i5 = i4->getNextNonDebugInstruction();
-  if(!i5) return false;
-  Instruction * icall = i5->getNextNonDebugInstruction();
-  if(!icall) return false;
-  CallInst * icallInst = dyn_cast<CallInst>(icall);
-  if(!icallInst) return false;
+  // loop until idirect call
+  Instruction * inst = checkCall->getNextNonDebugInstruction();
+  while(!dyn_cast<CallInst>(inst)){
+    inst = inst->getNextNonDebugInstruction();
+  }
+  CallInst * icallInst = dyn_cast<CallInst>(inst);
   #ifdef CUSTOM_DEBUG
   checkCall->dump();
-  i1->dump();
-  i2->dump();
-  i3->dump();
-  i4->dump();
-  i5->dump();
   icallInst->dump();
   #endif
   // insert a bitcast after i5, before check

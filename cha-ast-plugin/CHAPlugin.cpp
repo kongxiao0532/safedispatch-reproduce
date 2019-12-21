@@ -42,7 +42,9 @@ protected:
   bool ParseArgs(const CompilerInstance &CI,
                 const std::vector<std::string> &args) override {
     for (unsigned i = 0, e = args.size(); i != e; ++i) {
+      #ifdef CUSTOM_DEBUG
       llvm::errs() << "PrintFunctionNames arg = " << args[i] << "\n";
+      #endif
 
       // Example error handling.
       DiagnosticsEngine &D = CI.getDiagnostics();

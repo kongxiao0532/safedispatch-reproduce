@@ -8,6 +8,15 @@ This implementation includes two **ASTVistitor**s based on [Clang LibTooling](ht
 
 ## Set up Environment
 The code is tested on LLVM version 9.0 with clang & clang-tools-extra.
+
+### Set up environment using docker
+```bash
+$ cd docker
+$ docker build -t ubuntu:safedispatch .
+$ docker run -it ubuntu:safedispatch /bin/bash
+```
+
+### Set up environment manually
 1. Download the LLVM project source code from [[llvm-project 9.0 Source Code Release](https://github.com/llvm/llvm-project/archive/llvmorg-9.0.0.zip)].
    ```bash
    $ wget https://github.com/llvm/llvm-project/archive/llvmorg-9.0.0.zip

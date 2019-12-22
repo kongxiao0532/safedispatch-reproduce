@@ -90,7 +90,7 @@ void CHAVisitor::CalculateValidM(){
     i++) {
     // find all virtual methods including original ones and inherited ones
     CXXRecordDecl * CRD = i->first;
-    std::vector<std::string> VMethodsNames = this->FindAllVMethodString(CRD, false, false);
+    std::vector<std::string> VMethodsNames = this->FindAllVMethodString(CRD, false, VALIDM_WITH_PARAMS);
     // for all virtual methods including original ones and inherited ones
     for(std::string VMethodName : VMethodsNames){
       // 1)2) Original vmethods of subclasses and itself
@@ -98,14 +98,14 @@ void CHAVisitor::CalculateValidM(){
       // (including multiple-layer inherit, calculated by this->CalculateAllSubclass())
       for(CXXRecordDecl * SubclassCRD : i->second){
         // for all vmethods in the *SubclassCRD* with the name *VMethodName*
-        std::vector<CXXMethodDecl *> VMethods = FindVMethodPointer(SubclassCRD, VMethodName);
+        std::vector<CXXMethodDecl *> VMethods = FindVMethodPointer(SubclassCRD, VMethodName, VALIDM_WITH_PARAMS);
         for(CXXMethodDecl * VMethod : VMethods){
           ValidM[CRD][VMethodName].insert(VMethod);
         }
       }
       // 3) vmethods inherited for CRD's base classes
       for(CXXMethodDecl * InheritedVMethod : ClassInheritedVMethodPtrMap[CRD]){
-        if(this->GetFunctionAsString(InheritedVMethod, false, false) == VMethodName){
+        if(this->GetFunctionAsString(InheritedVMethod, false, VALIDM_WITH_PARAMS) == VMethodName){
           ValidM[CRD][VMethodName].insert(InheritedVMethod);
         }
       }
@@ -308,7 +308,7 @@ std::vector<CXXMethodDecl *> CHAVisitor::FindAllVMethodPointer(CXXRecordDecl * C
  * to the origin virtual method of a given C++ class *CRD* with *MethodName* (e.g. m1)
  * [There may be more than one virtual methods with the same MethodName]
  */
-std::vector<CXXMethodDecl *> CHAVisitor::FindVMethodPointer(CXXRecordDecl * CRD, std::string MethodName){
+std::vector<CXXMethodDecl *> CHAVisitor::FindVMethodPointer(CXXRecordDecl * CRD, std::string MethodName, bool withParams){
   std::vector<CXXMethodDecl *> VMethods;
   // for all methods
   for(auto i = CRD->method_begin(),
@@ -317,7 +317,7 @@ std::vector<CXXMethodDecl *> CHAVisitor::FindVMethodPointer(CXXRecordDecl * CRD,
     i++) {
     Decl *D = *i;
     if(CXXMethodDecl *CMD = dyn_cast<CXXMethodDecl>(D)){
-      if(CMD->isVirtual() && CMD->getNameAsString() == MethodName)
+      if(CMD->isVirtual() && GetFunctionAsString(CMD, false, withParams) == MethodName)
         VMethods.push_back(CMD);
     }
   }

@@ -54,7 +54,7 @@ private:
   void CalculateInheritedVMethod();
   std::vector<std::string> FindAllVMethodString(CXXRecordDecl * CRD, bool Qualified, bool WithParams);
   std::vector<CXXMethodDecl *> FindAllVMethodPointer(CXXRecordDecl * CRD);
-  std::vector<CXXMethodDecl *> FindVMethodPointer(CXXRecordDecl * CRD, std::string MethodName);
+  std::vector<CXXMethodDecl *> FindVMethodPointer(CXXRecordDecl * CRD, std::string MethodName, bool withParams);
   void CalculateValidM();
 
   #ifdef CUSTOM_DEBUG

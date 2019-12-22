@@ -2,6 +2,8 @@ build/*
 
 # cpp binary
 *.so
+*.o
+*.out
 *.native
 # LLVM binary
 *.bc

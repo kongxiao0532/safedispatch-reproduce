@@ -25,7 +25,7 @@ bool InstVisitor::VisitCXXMemberCallExpr(CXXMemberCallExpr * CMCE){
   }
   #endif
   int assigned =
-    ValidMInt[CMCE->getRecordDecl()][CMCE->getMethodDecl()->getNameAsString()];
+    ValidMInt[CMCE->getRecordDecl()][GetFunctionAsString(CMCE->getMethodDecl(), false, VALIDM_WITH_PARAMS)];
   // insert code
   std::stringstream stream;
   stream << "// check function " <<
@@ -35,4 +35,26 @@ bool InstVisitor::VisitCXXMemberCallExpr(CXXMemberCallExpr * CMCE){
   SourceLocation ST = CMCE->getSourceRange().getBegin();
   rewriter->InsertText(ST, stream.str(), true, true);
   return true;
+}
+
+/*
+ * Return a Function's as a string
+ * Including FunctionName and parameter type
+ * e.g. "m1(int,float)"
+ */
+std::string InstVisitor::GetFunctionAsString(CXXMethodDecl * CMD, bool Qualified, bool WithParams){
+  std::string result = Qualified ? CMD->getQualifiedNameAsString() : CMD->getNameAsString();
+  if(WithParams){
+    result += "(";
+    for(auto i = CMD->param_begin(), e = CMD->param_end();
+    i != e;
+    i++) {
+      const ParmVarDecl * PVD = *i;
+      if(*(result.end() - 1) != '(')
+        result += ",";
+      result += PVD->getOriginalType().getAsString();
+    }
+    result += ")";
+  }
+  return result;
 }

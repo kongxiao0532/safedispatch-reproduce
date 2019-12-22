@@ -31,6 +31,7 @@ public:
       : Context(Context), rewriter(rewriter), ValidMInt(ValidMInt) {}
 
   bool VisitCXXMemberCallExpr(CXXMemberCallExpr * CMCE);
+  std::string GetFunctionAsString(CXXMethodDecl * CMD, bool Qualified, bool WithParams);
 
 private:
 };

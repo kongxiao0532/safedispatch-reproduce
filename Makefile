@@ -80,12 +80,9 @@ BUILDDIR := build
 .PHONY: all
 all: make_builddir \
 	emit_build_config \
-	$(BUILDDIR)/SafeDispatchIns.so \
-	$(BUILDDIR)/CHAPlugin.so \
-	$(BUILDDIR)/CHATooling
+	$(BUILDDIR)/CHATooling \
+	$(BUILDDIR)/SafeDispatchIns.so
 
-.PHONY: test
-test: emit_build_config
 
 .PHONY: emit_build_config
 emit_build_config: make_builddir
@@ -105,16 +102,8 @@ $(BUILDDIR)/CHATooling: cha-ast-plugin/CHATooling.cpp cha-ast-plugin/CHAVisitor.
 	$(CXX) $(CXXFLAGS) $(LLVM_CXXFLAGS) $(CLANG_INCLUDES) $^ \
 		$(CLANG_LIBS) $(LLVM_LDFLAGS) -o $@
 
-# Clang plugin
-$(BUILDDIR)/CHAPlugin.so: cha-ast-plugin/CHAPlugin.cpp cha-ast-plugin/CHAVisitor.cpp
-	$(CXX) $(PLUGIN_CXXFLAGS) $(CXXFLAGS) $(LLVM_CXXFLAGS) $(CLANG_INCLUDES) $^ \
-		$(PLUGIN_LDFLAGS) $(LLVM_LDFLAGS_NOLIBS) -o $@
 
-
-.PHONY: clean format
+.PHONY: clean
 
 clean:
 	rm -rf $(BUILDDIR)/* *.dot
-
-format:
-	find . -name "*.cpp" | xargs clang-format -style=file -i

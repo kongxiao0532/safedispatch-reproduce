@@ -1,6 +1,6 @@
 # Modified from https://raw.githubusercontent.com/eliben/llvm-clang-samples/master/Makefile
 
-LLVM_SRC_PATH := $$HOME/llvm-project
+LLVM_SRC_PATH := $$HOME/llvm-project-llvmorg-9.0.0
 
 # LLVM_BUILD_PATH is the directory in which you built LLVM - where you ran
 # configure or cmake.

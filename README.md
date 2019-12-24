@@ -4,7 +4,7 @@ SafeDispatch is a series of LLVM passes for C++ vtable protection. It checks the
 
 This repository implements class pointer protection (ValidM Table) of SafeDispatch in an ad-hoc manner.
 
-This implementation includes two **ASTVistitor**s based on [Clang LibTooling](https://clang.llvm.org/docs/LibTooling.html) and one **pass** on [LLVM IR](https://llvm.org/docs/LangRef.html). All together there are **1,256 LoC (excluding blank lines and comments)**. I believe all comments in the code are easy to read and understand.
+This implementation includes two **ASTVistitor**s based on [Clang LibTooling](https://clang.llvm.org/docs/LibTooling.html) and one **pass** on [LLVM IR](https://llvm.org/docs/LangRef.html). I believe all comments in the code are easy to read and understand.
 
 ## Set up Environment
 The code is tested on LLVM version 9.0 with clang & clang-tools-extra.
